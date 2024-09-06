@@ -1,8 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./Components/RootLayout";
 import Home from "./Pages/Home";
-import StockItems from "./Pages/StockItems";
+import StockItems from "./pages/StockItems";
 import NewItem from "./Pages/NewItem";
+import ShowItem from "./pages/ShowItem";
+import itemLoaderData from "./loaders/itemLoaderData";
+import EditItem from "./pages/EditItem";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +23,16 @@ const router = createBrowserRouter([
           {
             path: "newItem",
             element: <NewItem />,
+          },
+          {
+            path: ":itemId",
+            element: <ShowItem />,
+            loader: itemLoaderData,
+          },
+          {
+            path: "edit/:itemId",
+            element: <EditItem />,
+            loader: itemLoaderData,
           },
         ],
       },

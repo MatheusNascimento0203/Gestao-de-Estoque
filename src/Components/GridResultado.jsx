@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import stockItem from "../hooks/stockItem";
 
 function classNames(...classes) {
@@ -5,7 +6,7 @@ function classNames(...classes) {
 }
 
 export default () => {
-  const { itens } = stockItem();
+  const { itens, deleteItemStock } = stockItem();
 
   return (
     <div className="px-4 sm:px-6 lg:px-8">
@@ -78,7 +79,7 @@ export default () => {
                         "hidden whitespace-nowrap px-3 py-4 text-sm text-white lg:table-cell"
                       )}
                     >
-                      {item.quantidade}
+                      {`${item.quantidade} unid.`}
                     </td>
                     <td
                       className={classNames(
@@ -99,25 +100,25 @@ export default () => {
                       )}
                     >
                       <div className="flex gap-4">
-                        <a
-                          href="#"
-                          className="bg-blue-600 w-10 text-black hover:bg-blue-200 text-center rounded"
-                        >
-                          Ver<span className="sr-only">, {item.name}</span>
-                        </a>
-                        <a
-                          href="#"
-                          className="bg-white w-16 text-black hover:bg-blue-200 text-center rounded"
-                        >
-                          Atualizar
-                          <span className="sr-only">, {item.name}</span>
-                        </a>
-                        <a
-                          href="#"
+                        <Link to={`/stock/${item.id}`}>
+                          <button className="bg-blue-600 w-10 text-black hover:bg-blue-200 text-center rounded">
+                            Ver<span className="sr-only">, {item.name}</span>
+                          </button>
+                        </Link>
+                        <Link to={`/stock/edit/${item.id}`}>
+                          <button className="bg-white w-16 text-black hover:bg-blue-200 text-center rounded">
+                            Atualizar
+                            <span className="sr-only">, {item.name}</span>
+                          </button>
+                        </Link>
+                        <button
                           className="bg-red-800 w-14 text-black hover:bg-blue-200 text-center rounded"
+                          onClick={() => {
+                            deleteItemStock(item.id);
+                          }}
                         >
-                          Excluir<span className="sr-only">, {item.name}</span>
-                        </a>
+                          Excluir
+                        </button>
                       </div>
                     </td>
                   </tr>

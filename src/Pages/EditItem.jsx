@@ -1,28 +1,30 @@
 import { useState } from "react";
 import TextInput from "../Components/TextInput";
 import stockItem from "../hooks/stockItem.js";
+import { useLoaderData } from "react-router-dom";
 
 export default () => {
-  const [nome, setNome] = useState("");
-  const [quantidade, setQuantidade] = useState("");
-  const [preco, setPreco] = useState("");
-  const [categoria, setCategoria] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const { addItem } = stockItem();
+  const item = useLoaderData();
+
+  const [nome, setNome] = useState(item.nome);
+  const [quantidade, setQuantidade] = useState(item.quantidade);
+  const [preco, setPreco] = useState(item.preco);
+  const [categoria, setCategoria] = useState(item.categoria);
+  const [descricao, setDescricao] = useState(item.descricao);
+  const { editItem } = stockItem();
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    if (!nome || !quantidade || !preco || !categoria || !descricao) {
-      return alert(
-        "Para cadastrar um produto, precisa preencher todos os campos."
-      );
-    }
-    addItem({ nome, quantidade, preco, categoria, descricao });
-    setNome("");
-    setQuantidade("");
-    setPreco("");
-    setCategoria("");
-    setDescricao("");
+    editItem({
+      id: item.id,
+      nome,
+      quantidade,
+      preco,
+      categoria,
+      descricao,
+      dataCadastro: item.dataCadastro,
+    });
+    alert("Item atualizado com sucesso.");
   };
 
   return (
