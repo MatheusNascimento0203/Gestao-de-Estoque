@@ -11,9 +11,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
-  { name: "Produtos", href: "/products", current: false },
-  { name: "Carrinho", href: "/cart", current: false },
-  { name: "Administrador", href: "/admin", current: false },
+  { name: "Stock", href: "/stock", current: false },
 ];
 
 function classNames(...classes) {
@@ -43,8 +41,8 @@ export default () => {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex flex-shrink-0 items-center">
               <img
-                alt="Your Company"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                alt="Project-gestor"
+                src="../../public/logo_site.png"
                 className="h-8 w-auto"
               />
             </div>
