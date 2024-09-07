@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "./Components/RootLayout";
 import Home from "./Pages/Home";
-import StockItems from "./pages/StockItems";
+import StockItems from "./Pages/StockItems";
 import NewItem from "./Pages/NewItem";
-import ShowItem from "./pages/ShowItem";
+import ShowItem from "./Pages/ShowItem";
 import itemLoaderData from "./loaders/itemLoaderData";
 import EditItem from "./pages/EditItem";
 
