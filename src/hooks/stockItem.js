@@ -63,6 +63,7 @@ export default () => {
         timeZone: tzString,
       }),
     };
+
     setItem((state) => {
       const newStateEdit = state.map((item) =>
         item.id === id ? updateItem : item
